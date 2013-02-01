@@ -1,0 +1,42 @@
+package main
+
+import (
+	"github.com/nvcnvn/gorms"
+	"github.com/openvn/gocms"
+	"github.com/openvn/toys/locale"
+	"github.com/openvn/toys/view"
+	"labix.org/v2/mgo"
+	"net/http"
+)
+
+func main() {
+	//database session
+	dbsess, err := mgo.Dial("localhost")
+	if err != nil {
+		panic(err)
+	}
+	defer dbsess.Close()
+
+	//multi language support
+	lang := locale.NewLang("language")
+	lang.Parse("vi")
+	lang.Parse("en")
+
+	//template for cms
+	cmstmpl := view.NewView("cmstmpl")
+	cmsttmpl.Resource = "//localhost:8080/statics"
+	cmsttmpl.SetLang(lang)
+	cmsttmpl.Parse("default")
+
+	//template for rms
+	rmstmpl := view.NewView("rmstmpl")
+	rmsttmpl.Resource = "//localhost:8080/statics"
+	rmsttmpl.SetLang(lang)
+	rmsttmpl.Parse("default")
+
+	//routing
+	http.Handle("/", gocms.NewHandler(gocms.Router, dbsess, cmsttmpl))
+	http.Handle("/admin/data/", gorms.NewHandler(gorms.Data, dbsess, tmpl))
+	http.Handle("/statics/", http.StripPrefix("/statics/", http.FileServer(http.Dir("statics"))))
+	http.ListenAndServe("localhost:8080", nil)
+}

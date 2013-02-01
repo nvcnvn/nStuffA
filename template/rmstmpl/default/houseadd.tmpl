@@ -1,0 +1,95 @@
+{{define "page"}}
+<form action="/data/submit.html" method="POST">
+	<p>
+		Tổ: <input type="text" name="Group" /> Ấp: <input type="text" name="Block" /> 
+		Địa chỉ: <input class="contact" type="text" name="Address" />
+	</p>
+	<table>
+		<tr>
+			<td>STT</td>
+			<td>Họ và Tên</td>
+			<td>Nữ</td>
+			<td>Năm sinh</td>
+			<td>Trình độ</td>
+			<td>Chuyên môn</td>
+			<td>Đang đi học</td>
+			<td>Đang đi làm</td>
+			<td>Có thu nhập</td>
+			<td>Tham gia BHYT</td>
+			<td>Nguyện vọng</td>
+			<td>Ghi chú</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td>
+				<input class="contact" type="text" name="FullName" />
+			</td>
+			<td>
+				<input type="checkbox" value="1" name="Gender" />
+			</td>
+			<td>
+				<input class="contact" type="text" id="Birth" name="Birth" />
+			</td>
+			<td>
+				<select name="Quals">
+					<option value="0">Không đi học</option>
+					<option value="1">1</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+					<option value="4">4</option>
+					<option value="5">5</option>
+					<option value="6">6</option>
+					<option value="7">7</option>
+					<option value="8">8</option>
+					<option value="9">9</option>
+					<option value="10">10</option>
+					<option value="11">11</option>
+					<option value="12">12</option>
+					<option value="13">ĐH</option>
+					<option value="14">Sau ĐH</option>
+				</select>
+			</td>
+			<td>
+				<input type="text" name="Area" />
+			</td>
+			<td>
+				<input type="checkbox" value="1" name="AttendingSchool" />
+				<p>
+					Lớp: <input type="text" name="SchoolTitle" />
+					Trường: <input type="text" name="School" />
+				</p>
+			</td>
+			<td>
+				<input type="checkbox" value="1" name="Working" />
+				<p>
+					Công việc: <input type="text" name="WorkTitle" />
+					Địa chỉ: <input type="text" name="Office" />
+				</p>
+			</td>
+			<td>
+				<input type="checkbox" value="1" name="Incomes" />
+				<p>
+					Thu nhập: <input type="text" name="Amount" />
+					Nguồn thu: <input type="text" name="Form" />
+				</p>
+			</td>
+			<td>
+				<input type="text" name="HI" />
+			</td>
+			<td>
+				<input type="text" name="Desire" />
+			</td>
+			<td>
+				<input type="text" name="Note" />
+			</td>
+		</tr>
+	</table>
+	<p style="padding-top: 15px">
+		<span>&nbsp;</span>
+		<input class="submit" type="submit" name="submit" value="submit">
+	</p>
+</form>
+<script>
+$("#Birth").datepicker({dateFormat:"dd/mm/yy"});
+</script>
+{{end}}
