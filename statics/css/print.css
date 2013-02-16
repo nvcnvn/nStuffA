@@ -4,3 +4,9 @@ body {width:297mm; margin:0 auto 0 auto; padding:0; line-height: 1.4em; word-spa
 a:link, a:visited {background: transparent; color:#333; text-decoration:none;}
 a:link[href^="http://"]:after, a[href^="http://"]:visited:after {content: " (" attr(href) ") "; font-size: 11px;}
 a[href^="http://"] {color:#000;} 
+.hideprint {visibility:hidden;display:none;}
+table {page-break-inside:auto;max-width:100%;}
+tr {page-break-inside:avoid;page-break-after:auto;}
+td {word-wrap:break-word;}
+.trbreak {padding:5px;border:none;}
+.hosttr{background-color:gray;}
